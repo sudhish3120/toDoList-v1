@@ -56,7 +56,7 @@ form {
   margin-left: 20px;
 }
 
-button {
+.plus-btn {
   min-height: 50px;
   font-weight: 300;
   width: 50px;
@@ -67,6 +67,17 @@ button {
   font-size: 40px;
   border-width: 0;
 
+}
+
+.clear-btn{
+  background-color: #1fab89;
+  border-radius: 25px;
+  padding: 12px;
+  border-width: 0;
+  color: #fff;
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  font-weight: 400;
 }
 
 input[type="text"] {

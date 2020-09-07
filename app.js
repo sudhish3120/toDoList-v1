@@ -6,7 +6,7 @@ app.set('view engine','ejs');
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static("public"));
 
-var items=["Buy Food", "Cook Food", "Eat Food"];
+var items=[];
 var input;
 var workItems=[];
 
@@ -22,22 +22,18 @@ app.get("/",function(req, res){
   res.render('list', {listTitle: currentDay, newitem: items});
 });
 
-app.get("/work", function(req, res){
-  res.render('list', {listTitle: "Work List", newitem: workItems});
-});
 
 app.post("/",function(req, res){
   input=req.body.newItem;
 
-  if (req.body.list==="Work List"){
-    workItems.push(input);
-    res.redirect("/work");
+  if (req.body.list==="serverRestart"){
+    items=[];
+    res.redirect("/");
   } else{
     items.push(input);
-    res.redirect("/"); //once you press +, then the array is updated and the get request is initiated again
+    res.redirect("/");
   }
 
-  //redirecting because rendering in app.post will create problems in list.ejs when a GET request is initaited
 });
 
 app.listen(process.env.PORT || 3000, function(){
